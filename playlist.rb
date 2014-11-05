@@ -10,7 +10,7 @@ require 'qacloud'
 
 $task_id = ARGV[0]
 
-
+puts "#{$task_id}"
 
 class Playlistclass
 
@@ -28,16 +28,33 @@ $add_variable = Hash.new
 
 token_id = "0/Hxy85jkc9ZgSWAmwPFE/kLD60MBwwI6gDmGTHbGNBqt9sOehujaoZA62zccR0r"
 
-
 taskhash = Qacloud.GetFirstTask(task_id,token_id)
+
+
+	if taskhash.code == 500 then 
+
+		puts "Getting Task ID:"
+
+		taskhash = Qacloud.GetTaskid(task_id,token_id)
+
+		$task_id = taskhash["body"]["_id"]
+
+		task_id = $task_id
+
+		taskhash = Qacloud.GetFirstTask(task_id,token_id)
+
+	end 
+
+
 $workflow_name =  taskhash["body"]["workflow_name"]
 $mywfk = $workflow_name
-puts "Now Starting Workflow: #{$workflow_name}"
+# puts "Now Starting Workflow: #{$workflow_name}"
 $workflow_id =  taskhash["body"]["workflow_id"]
 $task_name =  taskhash["body"]["task_name"]
 $task_id =  taskhash["body"]["task_id"]
 $get_variable = taskhash["body"]["task_variables"]
 $environment = taskhash["body"]["environment"]
+puts "Starting Workflow: #{$workflow_name}"
 $workflow_status = taskhash["body"]["test"]
 puts "Now Starting Task: #{$task_name}"
 

@@ -1,11 +1,10 @@
-require 'rake/testtask'
+# require './playlist.rb'
+# task :default => [:test]
 
-task :default => [:test]
-Rake::TestTask.new(:test) do |test|
-  test.libs << 'test'
+# task :test1 do
+  ruby "playlist.rb 542456b0acb0470200000010"
+# end
 
-  # ensure the sample test file is included here
-  test.test_files = FileList['playlist.rb 542456b0acb0470200000010']
-
-  test.verbose = true
-end
+# task :test2 do
+#   ruby "playlist.rb 5455c475650ac50200000002"
+# end
