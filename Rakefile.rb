@@ -11,5 +11,5 @@
 
 task :playlistCI do
   plid = ENV["playlistid"]
-  ruby "plist.rb #{plid}"
+  ruby "playlist.rb #{plid}"
 end
