@@ -1,10 +1,16 @@
 require "watir-webdriver"
+require 'headless'
 
 def navigate 
-
-	 $browser = Watir::Browser.new :"#{$environment["Browser"]}"
-	 $browser.goto $environment["url"]
-
+	if $environment["Browser"].strip == "headless" then
+		headless = Headless.new
+		headless.start
+		$browser = Watir::Browser.start $environment["url"]
+	else	
+	 	$browser = Watir::Browser.new :"#{$environment["Browser"]}"
+	 	$browser.goto $environment["url"]
+	end
+	
 	 sleep 1
 
 	 $browser.h1(:text => "Welcome to the Internet").wait_until_present
