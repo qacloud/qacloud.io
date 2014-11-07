@@ -1,4 +1,5 @@
 require "watir-webdriver"
+# for headless testing (not same as phantomjs)
 require 'headless'
 
 def navigate 
