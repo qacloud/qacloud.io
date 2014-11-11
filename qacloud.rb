@@ -2,20 +2,20 @@
 require 'rubygems'
 require 'httparty'
 require 'qacloud'
-require 'watir-webdriver'
+require 'apisatqacloud'
+# require 'watir-webdriver'
 
 # get playlistID or playlistID CI id from args::
 
-playlistID = ARGV[0]
-tokenID = "your token id"
+# playlistID = ARGV[0]
+# tokenID = "your token id"
 
 
 def self.playlist(playlistID,tokenID)
 
 		taskhash = Qacloud.GetFirstTask(playlistID,tokenID)
-
 			if taskhash.code == 500 then 
-				puts "Getting Task ID:"
+				#puts "Getting Task ID:"
 				taskhash = Qacloud.GetTaskid(playlistID,tokenID)
 				playlistID = taskhash["body"]["_id"]
 				taskhash = Qacloud.GetFirstTask(playlistID,tokenID)
@@ -44,8 +44,7 @@ def self.playlist(playlistID,tokenID)
 			end
 			require_relative "#{path}"
 			dur1 = Time.now
-			$task_name()
-			dur2 = Time.now
+			$task_name
 
 	rescue Exception => e
 
@@ -59,16 +58,18 @@ def self.playlist(playlistID,tokenID)
 		result = "Exception occured, Checkpoint should have more info."
 		checkpoint = "Error Message: #{@error_message} , Script Line Number: #{@error_line}"
 		duration = dur2 - dur1
-		taskhash = Qacloud.GetNextTask(task_id,tokenID,status,result,checkpoint,duration)
-		$workflow_status = "finished"
+		# taskhash = Qacloud.GetNextTask(task_id,tokenID,status,result,checkpoint,duration)
+		# $workflow_status = "finished"
 		# Take error image:
 		# $browser.screenshot.save "#{dirname}/#{@error_line}.png"	
+	else
+			dur2 = Time.now
+			status = $status
+			result = $result
+			checkpoint = $checkpoint
+			duration = dur2 - dur1	
+
 	end
-				
-				status = $status
-				result = $result
-				checkpoint = $checkpoint
-				duration = dur2 - dur1
 
 	while $workflow_status !=  "finished"
 		    taskhash = Qacloud.GetNextTask(task_id,token_id,status,result,checkpoint,duration)
@@ -97,8 +98,8 @@ def self.playlist(playlistID,tokenID)
 			end
 				require_relative "#{path}"
 				dur1 = Time.now
-				$task_name()
-				dur2 = Time.now
+				$task_name
+				
 	rescue Exception => e
 			puts "Exception occured, Checkpoint should have more info."
 			@erro_line = e.backtrace[0].split(":")
@@ -110,14 +111,18 @@ def self.playlist(playlistID,tokenID)
 			result = "Exception occured, Checkpoint should have more info."
 			checkpoint = "Error Message: #{@error_message} , Script Line Number: #{@error_line}"
 			duration = dur2 - dur1
-			taskhash = Qacloud.GetNextTask(task_id,tokenID,status,result,checkpoint,duration)
-			$workflow_status = "finished"
+			# taskhash = Qacloud.GetNextTask(task_id,tokenID,status,result,checkpoint,duration)
+			# $workflow_status = "finished"
 			# Take error image:
 			# $browser.screenshot.save "#{dirname}/#{@error_line}.png"		
-		end
-			tatus = $status
+
+		else
+			dur2 = Time.now
+			status = $status
 			result = $result
 			checkpoint = $checkpoint
 			duration = dur2 - dur1
+
+		end	
 	end
 end
