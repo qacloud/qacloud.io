@@ -1,5 +1,5 @@
 require_relative "Controller"
-
+# to navigate
 navigate
 
 link_name = $get_variable["link_name"]

@@ -197,8 +197,7 @@ duration = duration2 - duration1
 
 end
 
- # $resultHash
- # load "Table_Generator.rb"
+
 end
 
 
