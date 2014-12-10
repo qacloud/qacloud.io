@@ -1,9 +1,9 @@
 require_relative "Controller"
-
-puts "here"
-puts $task_name
-
-def fileUpload
+# require "watir-webdriver"
+# puts "here"
+# puts $task_name
+method_name = $task_name
+def self.send(method_name)
   navigate
 
   link_name = $var["link_name"]

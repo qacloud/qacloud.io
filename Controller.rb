@@ -3,9 +3,7 @@ require "watir-webdriver"
 # for headless testing (not same as phantomjs)
 # requires unix / linux env
 # require 'headless'
-
-
-def navigate
+def self.navigate()
 	if $env["browser"].strip == "headless" then
 		headless = Headless.new
 		headless.start
@@ -24,12 +22,12 @@ def navigate
 end
 
 
-def click_link(link_name)
+def self.click_link(link_name)
 	$browser.a(:text => "#{link_name}").when_present.click
 	sleep 4
 	$checkpoint_click_link = "#{link_name} page is working."
 end
 
-def end_session
+def self.end_session()
 	$browser.quit
 end
