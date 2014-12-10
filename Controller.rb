@@ -4,7 +4,7 @@ require "watir-webdriver"
 # requires unix / linux env
 # require 'headless'
 
-
+#
 
 def navigate
 	if $env["browser"].strip == "headless" then
