@@ -2,7 +2,9 @@ require "watir-webdriver"
 
 # for headless testing (not same as phantomjs)
 # requires unix / linux env
-require 'headless'
+# require 'headless'
+
+puts "c here"
 
 def navigate
 	if $env["browser"].strip == "headless" then
