@@ -1,6 +1,9 @@
 require_relative "Controller"
 
-def $task_name
+puts "here"
+puts $task_name
+
+def fileUpload
   navigate
 
   link_name = $var["link_name"]

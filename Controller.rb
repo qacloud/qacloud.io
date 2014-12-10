@@ -1,17 +1,17 @@
 require "watir-webdriver"
 
 # for headless testing (not same as phantomjs)
-# requires unix / linux environment
+# requires unix / linux env
 require 'headless'
 
 def navigate
-	if $environment["browser"].strip == "headless" then
+	if $env["browser"].strip == "headless" then
 		headless = Headless.new
 		headless.start
-		$browser = Watir::Browser.start $environment["url"]
+		$browser = Watir::Browser.start $env["url"]
 	else
-	 	$browser = Watir::Browser.new :"#{$environment["browser"]}"
-	 	$browser.goto $environment["url"]
+	 	$browser = Watir::Browser.new :"#{$env["browser"]}"
+	 	$browser.goto $env["url"]
 	end
 	 sleep 1
 	 $browser.h1(:text => "Welcome to the Internet").wait_until_present

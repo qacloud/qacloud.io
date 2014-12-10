@@ -1,7 +1,7 @@
-#!/usr/bin/env ruby 
+#!/usr/bin/env ruby
 require 'qacloud'
 
 playlistID = ARGV[0]
 tokenID = "oChbNdoggDrVhIv/dL5cXkkUMflCASw3K/R2tUyyVa3HW1njpNOv3sXRElPxaj58"
+# tokenID = "0/Hxy85jkc9ZgSWAmwPFE/kLD60MBwwI6gDmGTHbGNBqt9sOehujaoZA62zccR0r"
 playlist(playlistID,tokenID)
-
