@@ -1,5 +1,5 @@
 require "watir-webdriver"
-
+#now with travisCI
 # for headless testing (not same as phantomjs)
 # requires unix / linux env
 # require 'headless'
