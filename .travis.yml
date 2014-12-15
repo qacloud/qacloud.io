@@ -8,4 +8,5 @@ rvm: # the Ruby versions to be used
 gemfile:
   - Gemfile
 
-script: "bundle exec rake playlistCI playlistid=54889b26a87eed0200000006"
+script:
+  - rake playlistCI playlistid=54889b26a87eed0200000006
