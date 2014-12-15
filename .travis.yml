@@ -5,6 +5,10 @@ language: ruby
 rvm: # the Ruby versions to be used
   - 2.0.0
 
+before_install:
+  - "export DISPLAY=:99.0"
+  - "sh -e /etc/init.d/xvfb start"
+
 gemfile:
   - Gemfile
 
