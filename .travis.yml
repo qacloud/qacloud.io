@@ -5,6 +5,7 @@ language: ruby
 rvm: # the Ruby versions to be used
   - 2.0.0
 
-script:
-  - bundle install
-  - rake playlistCI playlistid=54889b26a87eed0200000006
+gemfile:
+  - Gemfile
+
+script: "bundle exec rake playlistCI playlistid=54889b26a87eed0200000006"
