@@ -1,6 +1,6 @@
 require_relative "Controller"
 # require "watir-webdriver"
-# puts "here"
+ puts "here"
 # puts $task_name
 method_name = $task_name
 def self.send(method_name)
