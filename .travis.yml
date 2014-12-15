@@ -13,6 +13,4 @@ gemfile:
   - Gemfile
 
 script:
-  - ls
-  - pwd
   - rake playlistCI playlistid=54889b26a87eed0200000006
